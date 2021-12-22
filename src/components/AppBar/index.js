@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import { Link as RouterLink } from 'react-router-dom';
 import theme from '../../theme';
 
-export default function ColorTabs() {
+export default function Navi() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -20,8 +20,8 @@ export default function ColorTabs() {
     },
     {
       id: 2,
-      name: '부킹',
-      link: '/booking',
+      name: '연습장',
+      link: '/driving',
     },
     {
       id: 3,
@@ -67,6 +67,7 @@ export default function ColorTabs() {
         >
           {menuList.map((item) => (
             <Tab
+              sx={{ minWidth: '2em' }}
               component={RouterLink}
               label={item.name}
               to={item.link}
