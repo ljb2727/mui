@@ -2,6 +2,7 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+import Link from '@mui/material/Link';
 
 import { BrowserRouter as Router ,Routes, Route, Link as RouterLink  } from "react-router-dom";
 
@@ -14,19 +15,6 @@ export default function ColorTabs() {
     console.log("change")
   };
 
-  const LinkTab = (props) => {
-      console.log(props)
-      return(
-          <Tab
-              component={RouterLink}
-              sx={{minWidth:"2em"}}
-              onClick={(event) => {
-                    event.preventDefault();
-                }}
-                {...props}
-          />
-      )
-  }
 
 
 
@@ -97,8 +85,9 @@ const Onebooking =() =>{
                 scrollButtons="auto"
                 >
                 {menuList.map((item)=>(
-                    <LinkTab label={item.name} to={item.link} key={item.id}/>
+                    <Tab component={RouterLink} label={item.name} to={item.link} key={item.id} />
                 ))}
+                    
                 </Tabs>
             </Box>
 
