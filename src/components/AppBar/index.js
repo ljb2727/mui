@@ -3,7 +3,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 
-import { Link, Route, BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router ,Routes, Route, Link as RouterLink  } from "react-router-dom";
+
 
 export default function ColorTabs() {
     const [value, setValue] = React.useState(0);
@@ -14,9 +15,10 @@ export default function ColorTabs() {
   };
 
   const LinkTab = (props) => {
+      console.log(props)
       return(
           <Tab
-              component="a"
+              component={RouterLink}
               sx={{minWidth:"2em"}}
               onClick={(event) => {
                     event.preventDefault();
@@ -26,6 +28,8 @@ export default function ColorTabs() {
       )
   }
 
+
+
   const menuList = [{
           id: 1,
           name: "홈",
@@ -34,21 +38,21 @@ export default function ColorTabs() {
       {
           id: 2,
           name: "부킹",
-          link: "/main_booking"
+          link: "/booking"
       },
       {
           id: 3,
           name: "1인부킹",
-          link: "/main_onebooking"
+          link: "/onebooking"
       }, {
           id: 4,
           name: "조인/양도",
-          link: "/main_transfer"
+          link: "/transfer"
       },
       {
           id: 5,
           name: "국내투어",
-          link: "/main_package"
+          link: "/package"
       },
       {
           id: 6,
@@ -65,23 +69,50 @@ export default function ColorTabs() {
           name: "쇼핑몰",
           link: "/shop"
       }
-  ]
+  ];
+
+  const Home =() =>{
+      return (
+          <div>home</div>
+      )
+  }
+  const Booking =() =>{
+    return (
+        <div>Booking</div>
+    )
+}
+const Onebooking =() =>{
+    return (
+        <div>onebooking</div>
+    )
+}
   return (
-    <Router>
-        <Box sx={{ minWidth: "100%", bgcolor: 'background.paper' }}>
-            <Tabs
-            value={value}
-            onChange={handleChange}
-            variant="scrollable"
-            scrollButtons="auto"
-            aria-label="scrollable auto tabs example"
-            >
-            {menuList.map((item)=>(
-                <LinkTab label={item.name} to={item.link} key={item.id} />
-            ))}
-            </Tabs>
-        </Box>
-    </Router>
+     <>
+        <Router>
+            <Box sx={{ minWidth: "100%", bgcolor: 'background.paper' }}>
+                <Tabs
+                value={value}
+                onChange={handleChange}
+                variant="scrollable"
+                scrollButtons="auto"
+                >
+                {menuList.map((item)=>(
+                    <LinkTab label={item.name} to={item.link} key={item.id}/>
+                ))}
+                </Tabs>
+            </Box>
+
+            <Routes>
+              <Route path="/home" exact element={<Home/>}/>
+              <Route path="/booking" element={<Booking/>}/>
+              <Route path="/onebooking" element={<Onebooking/>}/>
+            </Routes>
+            
+        </Router>
+        
+        
+    </>   
+
   );
 }
 
