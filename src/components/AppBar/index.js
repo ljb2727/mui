@@ -3,6 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { Link as RouterLink } from 'react-router-dom';
+import theme from '../../theme';
 
 export default function ColorTabs() {
   const [value, setValue] = React.useState(0);
@@ -56,12 +57,13 @@ export default function ColorTabs() {
 
   return (
     <>
-      <Box sx={{ minWidth: '100%', bgcolor: 'background.paper' }}>
+      <Box sx={{ minWidth: '100%' }}>
         <Tabs
           value={value}
           onChange={handleChange}
           variant="scrollable"
           scrollButtons="auto"
+          TabIndicatorProps={{ style: { background: theme.base.primary } }}
         >
           {menuList.map((item) => (
             <Tab
