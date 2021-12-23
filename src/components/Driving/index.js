@@ -5,18 +5,51 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import Stack from '@mui/material/Stack';
+import { palette } from '@mui/system';
 export default function ImgMediaCard() {
+  const drivingList = [
+    {
+      title: '연습장1',
+      tel: '010-1234-5678',
+      info: '어쩌구',
+      image: './static/images/a1.jpg',
+    },
+    {
+      title: '연습장1',
+      tel: '010-1234-5678',
+      info: '어쩌구',
+      image: './static/images/a2.jpg',
+    },
+    {
+      title: '연습장1',
+      tel: '010-1234-5678',
+      info: '어쩌구',
+      image: './static/images/a3.jpg',
+    },
+    {
+      title: '연습장1',
+      tel: '010-1234-5678',
+      info: '어쩌구',
+      image: './static/images/a4.jpg',
+    },
+    {
+      title: '연습장1',
+      tel: '010-1234-5678',
+      info: '어쩌구',
+      image: './static/images/a5.jpg',
+    },
+  ];
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         alt="green iguana"
         height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
+        //image="./static/images/a1.jpg"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h6" component="div">
           Lizard
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -25,8 +58,10 @@ export default function ImgMediaCard() {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Stack direction={'row'} spacing={2} sx={{ mx: 'auto' }}>
+          <Button variant="contained">Contained</Button>
+          <Button variant="contained">Contained</Button>
+        </Stack>
       </CardActions>
     </Card>
   );
