@@ -1,29 +1,28 @@
 import React from 'react';
 import { styled } from '@mui/system';
-import Card from '@mui/material/Card';
+import CustomCard from './Card';
 
-const BoxWrap = styled('ul')({
+const BoxWrap = styled('div')({
   background: '#c8c8',
-  listStyle: 'none',
-  overflowX: 'auto',
+  display: 'flex',
+  overflowX: 'scroll',
 });
 
-const Item = styled('li')({
-  border: '1px solid #000000',
-  width: '200px',
-  height: '200px',
-  float: 'left',
-  listStyle: 'none',
-});
+const timeList = [
+  { number: 1, time: 30, option: true },
+  { number: 2, time: 0, option: true },
+  { number: 3, time: 50, option: false },
+  { number: 4, time: 0, option: true },
+  { number: 5, time: 0, option: false },
+  { number: 6, time: 120, option: false },
+];
 
 const DrivingList = () => {
   return (
     <>
-      <Card variant="outlined">1</Card>
-      <Card variant="outlined">1</Card>
-      <Card variant="outlined">1</Card>
-      <Card variant="outlined">1</Card>
-      <Card variant="outlined">1</Card>
+      <BoxWrap>
+        <CustomCard>1</CustomCard>
+      </BoxWrap>
     </>
   );
 };
