@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
@@ -8,11 +8,17 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import GolfCourseIcon from '@mui/icons-material/GolfCourse';
 import SportsGolfIcon from '@mui/icons-material/SportsGolf';
-
-const member = () => {
-  alert('df');
-};
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 export default function ImgMediaCard() {
+  const [name, setName] = useState('');
+  const click = (props) => {
+    setName(props);
+  };
+
+  useEffect(() => {
+    console.log(name);
+  }, [name]);
+
   return (
     <>
       {drivingList.map((item, index) => {
@@ -28,7 +34,7 @@ export default function ImgMediaCard() {
                 <Button
                   variant="contained"
                   size="large"
-                  onClick={member}
+                  onClick={() => click(item.title)}
                   disableElevation
                   startIcon={<GolfCourseIcon />}
                   fullWidth={true}
