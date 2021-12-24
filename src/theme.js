@@ -2,6 +2,9 @@ import { createTheme } from '@mui/material/styles';
 import { orange, green } from '@mui/material/colors';
 
 let theme = createTheme({
+  default: '#91C788',
+  disabled: '#bbbbbb',
+  white: '#fff',
   palette: {
     primary: {
       main: '#91C788 ',
@@ -17,11 +20,11 @@ let theme = createTheme({
     },
     error: {
       main: '#DD4A48',
-      contrastText: '#333',
+      contrastText: '#fff',
     },
     info: {
-      main: '#4F091D',
-      contrastText: '#333',
+      main: '#0288d1',
+      contrastText: '#fff',
     },
     text: {
       primary: '#000',

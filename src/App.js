@@ -5,7 +5,6 @@ import { ThemeProvider } from '@mui/material/styles';
 import theme from 'theme';
 import Container from '@mui/material/Container';
 import Navi from 'components/AppBar';
-import AlertDialogSlide from 'Demo';
 import Driving from 'components/Driving';
 import DrivingList from 'components/Driving/list';
 
