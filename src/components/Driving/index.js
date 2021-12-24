@@ -8,7 +8,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import GolfCourseIcon from '@mui/icons-material/GolfCourse';
 import SportsGolfIcon from '@mui/icons-material/SportsGolf';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 export default function ImgMediaCard() {
   const [name, setName] = useState('');
   const click = (props) => {
@@ -38,6 +38,8 @@ export default function ImgMediaCard() {
                   disableElevation
                   startIcon={<GolfCourseIcon />}
                   fullWidth={true}
+                  component={RouterLink}
+                  to="/driving_list"
                 >
                   연습장 정회원
                 </Button>
