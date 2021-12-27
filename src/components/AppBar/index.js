@@ -63,8 +63,8 @@ export default function Navi() {
       if (path.pathname.indexOf(e.link) >= 0) {
         setValue(e.id);
       }
+      return false;
     });
-    console.log('app bar ');
   });
 
   return (
