@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { useEffect } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { Link as RouterLink } from 'react-router-dom';
-import theme from '../../theme';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
+import theme from 'theme';
 
 export default function Navi() {
   const [value, setValue] = React.useState(0);
@@ -14,46 +15,57 @@ export default function Navi() {
 
   const menuList = [
     {
-      id: 1,
+      id: 0,
       name: '홈',
       link: '/home',
     },
     {
-      id: 2,
+      id: 1,
       name: '연습장',
       link: '/driving',
     },
     {
-      id: 3,
+      id: 2,
       name: '1인부킹',
       link: '/onebooking',
     },
     {
-      id: 4,
+      id: 3,
       name: '조인/양도',
       link: '/transfer',
     },
     {
-      id: 5,
+      id: 4,
       name: '국내투어',
       link: '/package',
     },
     {
-      id: 6,
+      id: 5,
       name: '이용후기',
       link: '/epilogue',
     },
     {
-      id: 7,
+      id: 6,
       name: '이벤트',
       link: '/event',
     },
     {
-      id: 8,
+      id: 7,
       name: '쇼핑몰',
       link: '/shop',
     },
   ];
+
+  const path = useLocation();
+
+  useEffect(() => {
+    menuList.map((e) => {
+      if (path.pathname.indexOf(e.link) >= 0) {
+        setValue(e.id);
+      }
+    });
+    console.log('app bar ');
+  });
 
   return (
     <>

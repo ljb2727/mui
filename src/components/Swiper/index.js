@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Box from '@mui/material/Box';
@@ -6,6 +7,8 @@ import theme from 'theme';
 import Divider from '@mui/material/Divider';
 
 import Chip from '@mui/material/Chip';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 // Import Swiper styles
 const swiperStyle = {
@@ -26,9 +29,27 @@ const StyledChip = styled(Chip)({
 });
 
 const BaseSwiper = ({ props }) => {
-  console.log(props.target);
+  const [open, setOpen] = useState(false);
+  const timeCheck = (props) => {
+    props ? console.log('타임있어') : setOpen(true);
+  };
+  const handleClose = (event, reason) => {
+    setOpen(false);
+  };
+
   return (
     <>
+      <Snackbar
+        message="타임이 없습니다."
+        open={open}
+        autoHideDuration={3000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+          타입이 없습니다
+        </Alert>
+      </Snackbar>
       <Divider>{`${props.floor}층`}</Divider>
       <Swiper
         spaceBetween={10}
@@ -40,6 +61,7 @@ const BaseSwiper = ({ props }) => {
         {props.target.map((item, i) => (
           <SwiperSlide style={swiperStyle} key={i} value={item.time}>
             <Box
+              onClick={() => timeCheck(item.time)}
               style={{
                 background: item.time ? theme.default : theme.disabled,
                 padding: '10px 4px 4px',
