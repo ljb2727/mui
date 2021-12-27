@@ -7,7 +7,6 @@ import Container from '@mui/material/Container';
 import Navi from 'components/AppBar';
 import Driving from 'components/Driving';
 import DrivingList from 'components/Driving/list';
-
 const Home = () => {
   return <div>home</div>;
 };
@@ -16,13 +15,14 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+
       <Router>
         <Navi />
         <Container sx={{ p: 1 }}>
           <Routes>
             <Route path="/home" exact element={<Home />} />
             <Route path="/driving" element={<Driving />} />
-            <Route path="/driving_list" element={<DrivingList />} />
+            <Route path="/driving_list/:name" element={<DrivingList />} />
           </Routes>
         </Container>
       </Router>

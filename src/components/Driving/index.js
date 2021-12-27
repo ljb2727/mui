@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
@@ -9,23 +9,38 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import GolfCourseIcon from '@mui/icons-material/GolfCourse';
 import SportsGolfIcon from '@mui/icons-material/SportsGolf';
 import { Link as RouterLink } from 'react-router-dom';
+import Skeleton from '@mui/material/Skeleton';
+
 export default function ImgMediaCard() {
-  const [name, setName] = useState('');
-  const click = (props) => {
-    setName(props);
+  const counter = useRef(0);
+  const imageLoaded = () => {
+    counter.current += 1;
+    if (counter.current >= drivingList.length) {
+      setLoading(false);
+    }
   };
 
-  useEffect(() => {
-    console.log(name);
-  }, [name]);
-
+  const [loading, setLoading] = useState(true);
   return (
     <>
       {drivingList.map((item, index) => {
         return (
           <Card key={index} sx={{ marginBottom: '10px' }}>
             <ImageListItem key={item.img}>
-              <img src={`${item.img}`} alt={item.title} loading="lazy" />
+              {/* <img src={`${item.img}`} alt={item.title} loading="lazy" /> */}
+              <Skeleton
+                style={{ display: loading ? 'block' : 'none' }}
+                variant="rectangular"
+                width={'100vw'}
+                height={'75vw'}
+              />
+
+              <img
+                style={{ display: loading ? 'none' : 'block' }}
+                src="https://placeimg.com/640/480/tech"
+                alt={item.title}
+                onLoad={imageLoaded}
+              />
               <ImageListItemBar title={item.title} subtitle={item.info} />
             </ImageListItem>
 
@@ -34,12 +49,11 @@ export default function ImgMediaCard() {
                 <Button
                   variant="contained"
                   size="large"
-                  onClick={() => click(item.title)}
                   disableElevation
                   startIcon={<GolfCourseIcon />}
                   fullWidth={true}
                   component={RouterLink}
-                  to="/driving_list"
+                  to={`/driving_list/${item.title}`}
                 >
                   연습장 정회원
                 </Button>

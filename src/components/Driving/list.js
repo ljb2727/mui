@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import BaseSwiper from 'components/Swiper';
 
 const timeList2 = [
@@ -47,8 +48,11 @@ const timeList2 = [
 ];
 
 const DrivingList = () => {
+  const name = useParams();
+  console.log(name.name);
   return (
     <>
+      <h2>{name.name}</h2>
       {timeList2.map((e, i) => (
         <BaseSwiper props={timeList2[i]} key={i} />
       ))}
