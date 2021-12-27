@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
@@ -9,7 +9,8 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import GolfCourseIcon from '@mui/icons-material/GolfCourse';
 import SportsGolfIcon from '@mui/icons-material/SportsGolf';
 import { Link as RouterLink } from 'react-router-dom';
-import Skeleton from '@mui/material/Skeleton';
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 
 export default function ImgMediaCard() {
   const counter = useRef(0);
@@ -28,16 +29,21 @@ export default function ImgMediaCard() {
           <Card key={index} sx={{ marginBottom: '10px' }}>
             <ImageListItem key={item.img}>
               {/* <img src={`${item.img}`} alt={item.title} loading="lazy" /> */}
-              <Skeleton
-                style={{ display: loading ? 'block' : 'none' }}
-                variant="rectangular"
-                width={'100vw'}
-                height={'75vw'}
-              />
+              <Box
+                sx={{
+                  display: loading ? 'flex' : 'none',
+                  width: '100vw',
+                  justifyContent: 'center',
+                  height: '60vw',
+                  alignItems: 'center',
+                }}
+              >
+                <CircularProgress />
+              </Box>
 
               <img
                 style={{ display: loading ? 'none' : 'block' }}
-                src="https://placeimg.com/640/480/tech"
+                src={`${item.img}`}
                 alt={item.title}
                 onLoad={imageLoaded}
               />
