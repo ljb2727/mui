@@ -59,7 +59,7 @@ export default function ImgMediaCard() {
                   startIcon={<GolfCourseIcon />}
                   fullWidth={true}
                   component={RouterLink}
-                  to={`/driving_list/${item.title}`}
+                  to={`/driving/list/${item.title}`}
                 >
                   연습장 정회원
                 </Button>

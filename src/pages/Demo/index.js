@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Demo() {
+export default function Demo({ props }) {
   const [text, setText] = useState({
     name: '',
     nickname: '',
@@ -14,11 +14,14 @@ export default function Demo() {
       [name]: value,
     });
   };
+
+  console.log(props);
+
   return (
     <div>
       <input type="text" name="name" onChange={onChange} />
       <input type="text" name="nickname" onChange={onChange} />
-      <div>
+      <div onClick={() => props}>
         <b>값: </b>
         {name} ({nickname})
       </div>

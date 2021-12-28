@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Home = () => {
-  return <div>test</div>;
+const Home = ({ onClick }) => {
+  return <div onClick={onClick}>test</div>;
 };
 
 export default Home;

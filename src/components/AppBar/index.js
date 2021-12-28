@@ -17,7 +17,7 @@ export default function Navi() {
     {
       id: 0,
       name: '홈',
-      link: '/home',
+      link: '/',
     },
     {
       id: 1,
