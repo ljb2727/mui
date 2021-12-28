@@ -7,6 +7,8 @@ import theme from 'theme';
 import Divider from '@mui/material/Divider';
 
 import Chip from '@mui/material/Chip';
+
+import Slide from '@mui/material/Slide';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
@@ -45,6 +47,7 @@ const BaseSwiper = ({ props }) => {
         autoHideDuration={3000}
         onClose={handleClose}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        TransitionComponent={Slide}
       >
         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
           타입이 없습니다
