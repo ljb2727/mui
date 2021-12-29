@@ -8,20 +8,17 @@ import Navi from 'components/AppBar';
 
 import { Home, Driving, DrivingList, Demo } from 'pages';
 const App = () => {
-  const onClick = () => {
-    alert('dffd');
-  };
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Demo />
       <Router>
         <Navi />
         <Container sx={{ p: 1 }}>
           <Routes>
-            <Route path="/" exact element={<Home onClick={onClick} />} />,
+            <Route path="/" exact element={<Home />} />,
             <Route path="/driving" element={<Driving />} />
             <Route path="/driving/list/:name" element={<DrivingList />} />
+            <Route path="/demo" element={<Demo />} />
           </Routes>
         </Container>
       </Router>

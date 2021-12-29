@@ -1,30 +1,55 @@
-import React, { useState } from 'react';
-
-export default function Demo({ props }) {
-  const [text, setText] = useState({
-    name: '',
-    nickname: '',
+import React, { useRef, useState } from 'react';
+import UserList from './UserList';
+import CreateUser from './CreateUser';
+function Demo() {
+  const [inputs, setInputs] = useState({
+    username: '',
+    email: '',
   });
-  const { name, nickname } = text;
+  const { email, username } = inputs;
+
+  const [users, setUsers] = useState([
+    // {
+    //   username: '',
+    //   email: '',
+    //   id: '',
+    // },
+  ]);
 
   const onChange = (e) => {
     const { name, value } = e.target;
-    setText({
-      ...text,
+    setInputs({
+      ...inputs,
       [name]: value,
     });
   };
+  const nextId = useRef(0);
+  const onCreate = (e) => {
+    const user = {
+      id: nextId.current,
+      username: username,
+      email: email,
+    };
+    setUsers([...users, user]);
+    nextId.current += 1;
+  };
 
-  console.log(props);
+  const onRemove = (id) => {
+    console.log(id);
+    setUsers(users.filter((e) => e.id !== id));
+  };
 
   return (
-    <div>
-      <input type="text" name="name" onChange={onChange} />
-      <input type="text" name="nickname" onChange={onChange} />
-      <div onClick={() => props}>
-        <b>값: </b>
-        {name} ({nickname})
-      </div>
-    </div>
+    <>
+      <CreateUser
+        username={username}
+        email={email}
+        onChange={onChange}
+        onCreate={onCreate}
+      />
+      <UserList users={users} onRemove={onRemove} />
+    </>
   );
 }
+
+export default Demo;
